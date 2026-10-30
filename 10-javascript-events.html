@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript Events</title></head><body>
+<h1>JavaScript Events, Validation, Cookies and JSON</h1>
+<button id="dateBtn">Show current date and time</button><p id="dateOutput"></p>
+<form id="sampleForm"><label>Name (required): <input id="name" required></label><button type="submit">Submit</button></form><p id="formOutput"></p>
+<button id="cookieBtn">Set and read cookie</button><p id="cookieOutput"></p><p id="jsonOutput"></p>
+<script>
+document.querySelector("#dateBtn").addEventListener("click",()=>{document.querySelector("#dateOutput").textContent=new Date().toLocaleString();});
+document.querySelector("#sampleForm").addEventListener("submit",event=>{
+ event.preventDefault();const value=document.querySelector("#name").value.trim();
+ if(!value){alert("Name cannot be empty.");return;}
+ document.querySelector("#formOutput").textContent="Submitted: "+value;
+});
+function setCookie(name,value,days){const expiry=new Date(Date.now()+days*864e5).toUTCString();document.cookie=`${encodeURIComponent(name)}=${encodeURIComponent(value)}; expires=${expiry}; path=/; SameSite=Lax`;}
+function getCookie(name){const prefix=encodeURIComponent(name)+"=";return document.cookie.split("; ").find(c=>c.startsWith(prefix))?.slice(prefix.length) ?? "";}
+function checkCookie(name){return getCookie(name)!=="";}
+document.querySelector("#cookieBtn").addEventListener("click",()=>{setCookie("student","Charan",7);document.querySelector("#cookieOutput").textContent=checkCookie("student")?"Cookie value: "+decodeURIComponent(getCookie("student")):"Cookie not found";});
+const data={name:"Anu",department:"CSE",active:true};
+document.querySelector("#jsonOutput").textContent=data.name+" studies "+data.department+"; active="+data.active;
+// Debugging: use console.log(variable), console.table(array), console.error(error),
+// and browser DevTools breakpoints to inspect values and step through execution.
+console.log("Debug data:",data);console.table([{task:"HTML",done:true},{task:"CSS",done:false}]);
+</script></body></html>

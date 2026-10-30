@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript Access and Properties</title>
+<style>button{margin:5px;padding:8px}</style></head><body><h1>JavaScript Accessors and Prototypes</h1>
+<button id="hide">Click to hide this button</button><p id="status"></p>
+<p>Call/apply and counter examples are in the console and below.</p>
+<p>Counter: <strong id="count">0</strong></p><button id="increment">Count</button>
+<p>Getter/setter counter: <strong id="accessor">0</strong></p><button id="accessorBtn">Increase accessor counter</button>
+<script>
+document.querySelector("#hide").addEventListener("click",function(){this.style.display="none";document.querySelector("#status").textContent="Button disappeared.";});
+// call() passes arguments individually; apply() passes arguments as an array.
+function introduce(city,country){return `${this.name} lives in ${city}, ${country}.`;}
+const user={name:"Ravi"};
+console.log(introduce.call(user,"Hyderabad","India"));
+console.log(introduce.apply(user,["Chennai","India"]));
+let count=0;document.querySelector("#increment").addEventListener("click",()=>document.querySelector("#count").textContent=++count);
+const counter={_value:0,get value(){return this._value;},set value(v){if(Number.isInteger(v)&&v>=0)this._value=v;}};
+document.querySelector("#accessorBtn").addEventListener("click",()=>{counter.value=counter.value+1;document.querySelector("#accessor").textContent=counter.value;});
+// Add a method to an existing constructor's prototype.
+function Person(name){this.name=name;}
+Person.prototype.greet=function(){return "Hello, "+this.name;};
+console.log(new Person("Maya").greet());
+</script></body></html>

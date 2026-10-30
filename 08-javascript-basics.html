@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript Basics</title></head><body>
+<h1>JavaScript Basics</h1><p id="fruit"></p><button id="sort">Sort fruits descending</button><p id="sorted"></p><pre id="loop"></pre><p id="person"></p><p id="hoist"></p>
+<script>
+// Single-line comment
+/* Multi-line comment:
+   this block documents the program. */
+const fruits=["Apple","Mango","Banana","Orange"];
+document.querySelector("#fruit").textContent=fruits.join(", ");
+document.querySelector("#sort").addEventListener("click",()=>{
+  const result=[...fruits].sort((a,b)=>b.localeCompare(a));
+  document.querySelector("#sorted").textContent=result.join(", ");
+});
+// FOR...IN iterates over enumerable property keys.
+const student={name:"Anu",course:"CSE",year:3};let output="";
+for(const key in student){output+=key+" = "+student[key]+"\n";}
+document.querySelector("#loop").textContent=output;
+// Two ways to access object properties.
+const person={firstname:"Charan",lastname:"Kolli"};
+document.querySelector("#person").textContent=person.firstname+" "+person["lastname"];
+// var is hoisted; declaration is moved conceptually, but initialization is not.
+var message; message="Initialized after declaration"; // safe equivalent
+document.querySelector("#hoist").textContent=message;
+"use strict";
+// In strict mode, assigning to an undeclared variable throws ReferenceError.
+// Uncomment the next line to observe it: accidentalGlobal = 10;
+</script></body></html>

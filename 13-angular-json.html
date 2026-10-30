@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AngularJS JSON</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script></head>
+<body ng-app="jsonApp" ng-controller="JsonCtrl"><h1>JSON, ng-repeat and ng-options</h1>
+<label>Sort:
+<select ng-model="sortKey"><option value="name">Name</option><option value="marks">Marks</option></select></label>
+<table border="1" cellpadding="8"><tr><th>#</th><th>Name</th><th>Marks</th><th>Parity</th></tr>
+<tr ng-repeat="student in students | orderBy:sortKey" ng-class="{'odd':$odd,'even':$even}">
+<td>{{$index}}</td><td>{{student.name}}</td><td>{{student.marks}}</td><td>{{$odd?'Odd':'Even'}}</td></tr></table>
+<h2>Select using ng-options</h2><select ng-model="chosen" ng-options="s.name for s in students"></select><p>Selected: {{chosen.name}}</p>
+<h2>Select using ng-repeat</h2><select ng-model="chosenName"><option ng-repeat="s in students" value="{{s.name}}">{{s.name}}</option></select><p>Selected name: {{chosenName}}</p>
+<script>
+angular.module("jsonApp",[]).controller("JsonCtrl",function($scope){
+ // Equivalent to receiving JSON from a file/API. Serve a JSON file and use $http.get('students.json') in a real project.
+ $scope.students=[{"name":"Asha","marks":91},{"name":"Bala","marks":78},{"name":"Charan","marks":86}];
+ $scope.sortKey="name";$scope.chosen=$scope.students[0];
+});
+</script></body></html>

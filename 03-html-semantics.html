@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HTML5 Semantic Elements</title>
+<style>body{font:16px Arial;line-height:1.5;margin:2rem}header,nav,main,article,aside,footer,section{padding:1rem;margin:.5rem 0;border:1px solid #bbb} .layout{display:grid;grid-template-columns:2fr 1fr;gap:1rem}</style></head>
+<body>
+<header><h1>Semantic HTML5 Demonstration</h1><p>Header contains introductory content.</p></header>
+<nav><a href="#article">Article</a> | <a href="#form">Form</a> | <a href="#table">Table</a></nav>
+<main class="layout"><div>
+<section id="article"><h2>News</h2><article><hgroup><h2>Learning HTML5</h2><p>Semantic structure</p></hgroup>
+<p>HTML5 elements describe the meaning of content. <mark>Important text</mark> can be marked.</p>
+<figure><img src="https://via.placeholder.com/300x120" alt="Placeholder"><figcaption>Figure caption</figcaption></figure>
+<p>Published <time datetime="2026-10-30">30 October 2026</time>.</p></article></section>
+<section id="form"><h2>Contact form</h2><form><label>Name <input required></label><button>Send</button></form></section>
+<section id="table"><h2>Table</h2><table border="1" cellpadding="8"><tr><th>Course</th><th>Duration</th></tr><tr><td>HTML</td><td>1 day</td></tr></table></section>
+</div><aside><h2>Aside</h2><p>Related information.</p></aside></main>
+<footer><p>Footer information and copyright.</p></footer>
+</body></html>

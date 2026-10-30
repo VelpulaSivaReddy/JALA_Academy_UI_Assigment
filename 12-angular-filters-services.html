@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AngularJS Filters and Services</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script></head>
+<body ng-app="filterApp" ng-controller="FilterCtrl">
+<h1>AngularJS Filters and Services</h1>
+<p>{{ today | date:'fullDate' }}</p><p>{{ name | uppercase }} / {{ name | lowercase }}</p>
+<p>{{ amount | number:2 }}</p><p>{{ price | currency:'₹' }}</p>
+<p>{{ 'angularjs assignment' | titleCase }}</p>
+<p>Current path: {{currentPath}}</p><button ng-click="load()">HTTP GET</button><button ng-click="send()">HTTP POST</button>
+<p>{{httpMessage}}</p><p>Custom service: {{greeting}}</p><p>{{delayedMessage}}</p>
+<script>
+angular.module("filterApp",[])
+.filter("titleCase",function(){return function(input){return (input||"").replace(/\w\S*/g,w=>w[0].toUpperCase()+w.slice(1).toLowerCase());};})
+.service("GreetingService",function(){this.say=function(name){return "Hello, "+name;};})
+.controller("FilterCtrl",function($scope,$http,$location,$timeout,GreetingService){
+ $scope.today=new Date();$scope.name="AngularJS";$scope.amount=12345.678;$scope.price=250;
+ $scope.currentPath=$location.absUrl();$scope.greeting=GreetingService.say("Student");
+ $scope.delayedMessage="Waiting...";$timeout(()=>{$scope.delayedMessage="Shown after 2 seconds";},2000);
+ $scope.load=function(){$http.get("https://jsonplaceholder.typicode.com/todos/1").then(r=>{$scope.httpMessage="GET status "+r.status+"; data: "+JSON.stringify(r.data);$scope.lastConfig=r.config;},e=>$scope.httpMessage="GET failed: "+e.status);};
+ $scope.send=function(){$http.post("https://jsonplaceholder.typicode.com/posts",{title:"AngularJS",body:"Demo",userId:1}).then(r=>{$scope.httpMessage="POST status "+r.status+"; data: "+JSON.stringify(r.data);},e=>$scope.httpMessage="POST failed: "+e.status);};
+});
+</script></body></html>

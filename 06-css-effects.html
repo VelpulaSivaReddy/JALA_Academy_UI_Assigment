@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CSS Effects</title>
+<style>
+body{font:16px Arial;margin:2rem}.photo{width:260px;box-shadow:0 8px 20px #777;opacity:.75;transition:transform .3s,opacity .3s}
+.photo:hover{transform:scale(1.06);opacity:1;cursor:pointer}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(180px)}}
+.animated{width:120px;padding:15px;background:#9dd;animation-name:slide;animation-duration:2s;animation-iteration-count:3;animation-delay:.5s}
+.stage{height:180px;border:1px solid #aaa;position:relative}
+.static{position:static}.relative{position:relative;left:15px}.absolute{position:absolute;right:10px;top:45px;background:#ffd}
+.fixed{position:fixed;right:10px;bottom:10px;background:#def;padding:8px}.sticky{position:sticky;top:0;background:#dfd;padding:8px}
+.scrollbox{width:260px;height:80px;overflow:auto;border:1px solid;padding:8px}
+.pagination a{padding:8px 12px;border:1px solid #888;text-decoration:none}.pagination a:hover{background:#ddd}
+.pagination.spaced a{margin:0 4px}
+</style></head><body><h1>CSS Effects</h1><img class="photo" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500" alt="Landscape">
+<h2>Animation</h2><div class="animated">Animated box</div>
+<h2>Position values</h2><div class="stage"><div class="static">static</div><div class="relative">relative</div><div class="absolute">absolute</div></div>
+<div class="sticky">Sticky element: sticks at the top while scrolling</div><div style="height:180px"></div><div class="scrollbox">Overflow content. This box has a fixed height and overflow:auto. Add enough text to require scrolling. More text. More text. More text. More text. More text.</div>
+<h2>Pagination without spaces</h2><div class="pagination"><a href="#">1</a><a href="#">2</a><a href="#">3</a></div>
+<h2>Pagination with spaces</h2><div class="pagination spaced"><a href="#">1</a><a href="#">2</a><a href="#">3</a></div><div class="fixed">Fixed position</div></body></html>

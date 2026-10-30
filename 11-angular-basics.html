@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AngularJS Basics</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script></head>
+<body ng-app="demoApp" ng-controller="MainCtrl">
+<h1>AngularJS Basics</h1>
+<label>Enter a CSS color: <input ng-model="color" placeholder="lightblue"></label>
+<input ng-style="{'background-color':color}" value="Background changes using ng-model">
+<p>{{ 10 + 20 }} — expressions use double curly braces.</p>
+<p>Welcome {{firstName}} {{lastName}}</p>
+<div ng-init="items=['HTML','CSS','JavaScript']"><h2>ng-repeat</h2><ul><li ng-repeat="item in items">{{item}}</li></ul></div>
+<div ng-include="'included.html'"></div>
+<p>Controller scope value: {{message}}</p><p>Root scope value: {{$root.sharedMessage}}</p>
+<script>
+angular.module("demoApp",[])
+.run(function($rootScope){$rootScope.sharedMessage="Shared across the app";})
+.controller("MainCtrl",function($scope){$scope.color="lightyellow";$scope.firstName="Anu";$scope.lastName="Kumar";$scope.message="Hello from $scope";});
+</script>
+<!-- ng-include loads a separate file named included.html when served from a local web server.
+     Create included.html containing: <p>Loaded from an external HTML fragment.</p> -->
+</body></html>

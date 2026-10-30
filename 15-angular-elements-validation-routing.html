@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AngularJS Forms and Routing</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+<style>.ng-invalid.ng-touched{border:1px solid red}.ng-valid.ng-touched{border:1px solid green}.error{color:red}</style></head>
+<body ng-app="formApp" ng-controller="FormCtrl">
+<h1>AngularJS Form Elements and Validation</h1>
+<form name="studentForm" novalidate ng-submit="submit(studentForm)">
+<p><label>Name <input name="name" ng-model="student.name" required ng-minlength="2"></label>
+<span class="error" ng-show="studentForm.name.$touched && studentForm.name.$invalid">Name is required (at least 2 characters).</span></p>
+<p><label>Email <input name="email" type="email" ng-model="student.email" required></label>
+<span class="error" ng-show="studentForm.email.$touched && studentForm.email.$invalid">Enter a valid email.</span></p>
+<p><label>Department <select name="department" ng-model="student.department" required><option value="">Choose</option><option>CSE</option><option>ECE</option><option>IT</option></select></label></p>
+<p><label><input type="checkbox" ng-model="student.agree" required> I agree</label></p>
+<p>Year: <label><input type="radio" ng-model="student.year" value="2" required>2</label><label><input type="radio" ng-model="student.year" value="3">3</label></p>
+<button type="submit" ng-disabled="studentForm.$invalid || !validCustom()">Submit</button>
+</form><p>{{result}}</p>
+<h2>ng-show/ng-hide animation</h2><button ng-click="show=!show">Toggle animated content</button><p class="fade" ng-show="show">This content appears and disappears.</p>
+<h2>ngRoute navigation</h2><nav><a href="#!/home">Home</a> | <a href="#!/about">About</a> | <a href="#!/missing">Unknown</a></nav><div ng-view></div>
+<script>
+angular.module("formApp",["ngRoute"])
+.config(function($routeProvider){$routeProvider.when("/home",{template:"<h3>Home route</h3><p>Welcome to the home view.</p>"}).when("/about",{template:"<h3>About route</h3><p>This is the about view.</p>"}).otherwise({redirectTo:"/home"});})
+.controller("FormCtrl",function($scope){$scope.student={};$scope.show=true;
+ $scope.validCustom=function(){return $scope.student.agree===true;};
+ $scope.submit=function(form){if(form.$valid && $scope.validCustom())$scope.result="Form submitted: "+$scope.student.name+" ("+$scope.student.email+")";};
+});
+</script></body></html>

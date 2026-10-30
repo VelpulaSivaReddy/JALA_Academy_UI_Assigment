@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AngularJS Events</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script></head>
+<body ng-app="eventApp" ng-controller="EventCtrl">
+<h1>AngularJS Events and DOM</h1>
+<button ng-click="visible=!visible">Toggle message</button><p ng-show="visible">ng-show makes this element visible.</p>
+<p ng-hide="visible">ng-hide hides this element while retaining its layout space.</p>
+<button ng-disabled="!enabled">Disabled until checkbox is checked</button>
+<label><input type="checkbox" ng-model="enabled"> Enable button</label>
+<div style="height:150px;border:1px solid;padding:10px" ng-mousemove="move($event)">Move mouse here.
+<p>Mouse coordinates: {{x}}, {{y}}</p><p>Event type: {{eventType}}</p></div>
+<h2>Data from MySQL through an API</h2><button ng-click="fetchStudents()">Fetch students</button><pre>{{students | json}}</pre><p>{{error}}</p>
+<script>
+angular.module("eventApp",[]).controller("EventCtrl",function($scope,$http){
+ $scope.visible=true;$scope.enabled=false;$scope.move=function($event){$scope.x=$event.offsetX;$scope.y=$event.offsetY;$scope.eventType=$event.type;};
+ $scope.fetchStudents=function(){$http.get("http://localhost:3000/api/students").then(r=>$scope.students=r.data,e=>$scope.error="API error: "+e.status);};
+});
+</script></body></html>

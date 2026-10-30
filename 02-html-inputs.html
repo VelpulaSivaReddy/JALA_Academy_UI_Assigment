@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HTML Input Attributes</title>
+<style>body{font:16px Arial;margin:2rem}fieldset{margin:1rem 0;padding:1rem}label{display:inline-block;margin:.45rem}iframe{width:100%;height:150px;border:1px solid #888}</style></head>
+<body>
+<h1>HTML5 Inputs, Restrictions, Targets and Iframe</h1>
+<form action="https://httpbin.org/get" method="get" target="_blank">
+<fieldset><legend>Basic input types</legend>
+<label>Name <input type="text" name="name" maxlength="30" size="25" required></label>
+<label>Password <input type="password" name="password" required></label>
+<label>Gender <input type="radio" name="gender" value="female"> Female <input type="radio" name="gender" value="male"> Male</label>
+<label><input type="checkbox" name="terms" required> Accept terms</label>
+<input type="button" value="Normal button" onclick="alert('Button clicked')">
+<input type="submit" value="Submit"><input type="reset" value="Reset">
+</fieldset>
+<fieldset><legend>HTML5 input types</legend>
+<label>Age <input type="number" min="1" max="100" value="23"></label>
+<label>Range <input type="range" min="0" max="10"></label>
+<label>Color <input type="color" value="#3366ff"></label>
+<label>Date <input type="date"></label><label>File <input type="file"></label>
+<label>Time <input type="time"></label><label>Month <input type="month"></label>
+<label>Week <input type="week"></label><label>Email <input type="email" required></label>
+</fieldset>
+<fieldset><legend>Restrictions and states</legend>
+<label>Disabled <input value="Cannot edit" disabled></label>
+<label>Readonly <input value="Read only" readonly></label>
+<label>Required <input required placeholder="Required field"></label>
+<label>Min/max <input type="number" min="5" max="50"></label>
+</fieldset></form>
+<p><a href="https://example.com" target="_blank" rel="noopener">target=_blank (new tab)</a> |
+<a href="https://example.com" target="_self">target=_self (same tab)</a></p>
+<iframe title="Example iframe" srcdoc="<h2>Content inside iframe</h2><p>An iframe embeds another page/document.</p>"></iframe>
+<marquee behavior="scroll" direction="left">Legacy marquee demonstration (use CSS animation in modern sites).</marquee>
+</body></html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CSS Page Adjustments</title>
+<style>
+html{scroll-behavior:smooth}body{font:16px Arial;margin:0;padding:25px}
+table{border-collapse:collapse;width:100%}th,td{border:2px solid black;padding:12px}tr:hover{background:#d8efff}
+.hidden{visibility:hidden}.none{display:none}.visible{visibility:visible}
+.inline-demo{display:inline;background:#ffd}.block-demo{display:block;background:#dfd;margin:5px}.contents{display:contents}.listitem{display:list-item;margin-left:30px}
+.margin-box{margin:30px;background:#def}.padding-box{padding:30px;background:#fed}
+.multi{height:220px;padding:30px;background-image:url('https://via.placeholder.com/120x120'),url('https://via.placeholder.com/600x220/ccddee');
+background-repeat:no-repeat,no-repeat;background-position:right bottom,center;background-size:100px 100px,cover}
+.long{height:600px}
+</style></head><body id="top"><h1>CSS Page Adjustments</h1>
+<table><tr><th>Name</th><th>Score</th></tr><tr><td>Asha</td><td>90</td></tr><tr><td>Ravi</td><td>85</td></tr></table>
+<h2>Visibility</h2><p class="visible">Visible text</p><p class="hidden">Hidden but its layout space remains</p><p class="none">display:none: removed from layout</p>
+<h2>Display</h2><span class="inline-demo">inline item</span><div class="block-demo">block item</div><div class="contents"><span>contents child</span></div><div class="listitem">list-item display</div>
+<h2>Margin and padding</h2><div class="margin-box">Margin creates space outside this box.</div><div class="padding-box">Padding creates space inside this box.</div>
+<div class="multi">Multiple background layers; each can have its own size and position.</div>
+<div class="long">Long content area. Scroll down to the bottom link.</div><a href="#bottom">Click to go to bottom of page</a>
+<div style="height:300px"></div><p id="bottom">You reached the bottom.</p><a href="#top">Click to go to top of page</a></body></html>

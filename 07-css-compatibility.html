@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CSS Compatibility and Responsive Design</title>
+<style>
+*{box-sizing:border-box}body{font:16px Arial;margin:0}.wrap{padding:20px}
+table{border-collapse:collapse;width:100%;margin-bottom:20px}td,th{border:1px solid;padding:10px}
+.fixed{table-layout:fixed}.auto{table-layout:auto}
+ul{list-style-type:square}ol{list-style-type:upper-roman}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.grid div{padding:25px;background:#dce}
+.hero{height:260px;background:linear-gradient(#0005,#0005),url('https://images.unsplash.com/photo-1500534623283-312aade485b7?w=1400') center/cover;display:grid;place-items:center;color:white;font-size:2rem}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.hero{height:180px;font-size:1.4rem}}
+img,video{max-width:100%;height:auto}
+</style></head><body><div class="wrap"><h1>Responsive CSS</h1>
+<h2>table-layout: fixed</h2><table class="fixed"><tr><th>Column 1</th><th>Column 2</th></tr><tr><td>Long content that wraps within a fixed column</td><td>Short</td></tr></table>
+<h2>table-layout: auto</h2><table class="auto"><tr><th>Column 1</th><th>Column 2</th></tr><tr><td>Long content that influences automatic sizing</td><td>Short</td></tr></table>
+<ul><li>Square list marker</li><li>Another item</li></ul><ol><li>First</li><li>Second</li></ol>
+<h2>Grid</h2><div class="grid"><div>One</div><div>Two</div><div>Three</div></div>
+<h2>Hero image</h2><div class="hero">Welcome to my website</div>
+<h2>Responsive image and video</h2><img src="https://via.placeholder.com/900x300" alt="Responsive sample">
+<video controls><source src="sample.mp4" type="video/mp4">Your browser does not support video.</video>
+<p>Viewport meta tag makes CSS pixels map appropriately to device width. Resize the browser to test the media query.</p></div></body></html>
